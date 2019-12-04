@@ -8,3 +8,44 @@
         <small>{{ playlist.description }}</small>
     {% endfor %}
 {% endblock %}
+
+<!-- templates/playlists_index.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Playlists</h1>
+
+<!-- New link here -->
+<a href='/playlists/new'>New Playlist</a>
+
+{% for playlist in playlists %}
+    <h2>{{ playlist.title }}</h2>
+    <small>{{ playlist.description }}</small>
+{% endfor %}
+{% endblock %}
+
+<!-- templates/playlists_new.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<form method='POST' action='/playlists'>
+    <fieldset>
+    <legend>New Playlist</legend>
+    <!-- TITLE -->
+    <p>
+        <label for='title'>Title</label><br>
+        <input type='text' name='title' />
+    </p>
+    <p>
+        <label for='description'>Description</label><br>
+        <input type='text' name='description' />
+    </p>
+    </fieldset>
+
+    <!-- BUTTON -->
+    <p>
+        <button type='submit'>Save Playlist</button>
+    </p>
+</form>
+{% endblock %}
+
